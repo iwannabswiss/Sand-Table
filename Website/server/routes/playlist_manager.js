@@ -4,6 +4,7 @@ import path from 'path';
 import 'array.prototype.move';
 
 const JSON_DIR = __dirname + "/../../files/playlists.json";
+const JSON_ORG_DIR = __dirname + "/../../files/org/";
 
 var playlists;
 if (fs.existsSync(JSON_DIR))
@@ -11,8 +12,10 @@ if (fs.existsSync(JSON_DIR))
 else {
     playlists = {};
     var dir = path.dirname(JSON_DIR);
+    var orgDir = path.dirname(JSON_ORG_DIR);
     if (!fs.existsSync(dir))
         fs.mkdirSync(dir);
+	fs.mkdirSync(orgDir);
     fs.writeFileSync(JSON_DIR, JSON.stringify(playlists));
 }
 
