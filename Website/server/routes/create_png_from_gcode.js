@@ -2,6 +2,7 @@
 
 var gcodetogeometry = require("gcodetogeometry");
 var process_theta_rho = require("./process_theta_rho");
+var process_gcode = require("./process_gcode");
 var fs = require("fs");
 const sharp = require("sharp");
 
@@ -306,15 +307,92 @@ function process_file(
             return console.log(err);
         }
         var svg = createSVG(code, colors, title, width, height, 1, true);
-        sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
-            if (err) {
-                console.log("Cannot write " + title + ".png file.");
-            } else {
-                console.log('Done converting ' + title + '.gcode to png');
-                callback();
-            }
-        });
-    });
+
+	var ROTATE = process_gcode.ROTATE;
+	var FLIP = process_gcode.FLIP;
+	var FLOP = process_gcode.FLOP;
+
+	if (ROTATE == 'true' && FLIP == 'true' && FLOP == 'true') {
+		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+            		if (err) {
+                		console.log("Cannot write " + title + ".png file.");
+            		} else {
+                		console.log('Done converting ' + title + '.gcode to png');
+                		callback();
+            		}
+        	}); //EO sharp
+	}
+	else if (ROTATE == 'true' && FLIP == 'true') {
+		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+            		if (err) {
+                		console.log("Cannot write " + title + ".png file.");
+            		} else {
+                		console.log('Done converting ' + title + '.gcode to png');
+                		callback();
+            		}
+        	}); //EO sharp
+	}
+	else if (ROTATE == 'true' && FLOP == 'true') {
+		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+            		if (err) {
+                		console.log("Cannot write " + title + ".png file.");
+            		} else {
+                		console.log('Done converting ' + title + '.gcode to png');
+                		callback();
+            		}
+        	}); //EO sharp
+	}
+	else if (FLIP == 'true' && FLOP == 'true') {
+		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+            		if (err) {
+                		console.log("Cannot write " + title + ".png file.");
+            		} else {
+                		console.log('Done converting ' + title + '.gcode to png');
+                		callback();
+            		}
+        	}); //EO sharp
+	}
+	else if (ROTATE == 'true') {
+		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+            		if (err) {
+                		console.log("Cannot write " + title + ".png file.");
+            		} else {
+                		console.log('Done converting ' + title + '.gcode to png');
+                		callback();
+            		}
+        	}); //EO sharp
+	}
+	else if (FLIP == 'true') {
+		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+            		if (err) {
+                		console.log("Cannot write " + title + ".png file.");
+            		} else {
+                		console.log('Done converting ' + title + '.gcode to png');
+                		callback();
+            		}
+        	}); //EO sharp
+	}
+	else if (FLOP == 'true') {
+		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+            		if (err) {
+                		console.log("Cannot write " + title + ".png file.");
+            		} else {
+                		console.log('Done converting ' + title + '.gcode to png');
+                		callback();
+            		}
+        	}); //EO sharp
+	}
+	else {
+		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+            		if (err) {
+                		console.log("Cannot write " + title + ".png file.");
+            		} else {
+                		console.log('Done converting ' + title + '.gcode to png');
+                		callback();
+            		}
+        	}); //EO sharp
+	}
+    }); //EO readFile
 }
 
 function process_gcode_file_to_png(filename, callback) {
