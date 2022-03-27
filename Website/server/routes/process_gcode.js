@@ -12,9 +12,13 @@ const fillModeOptions = {
     FIT: 1
 }
 
+const SWAPXY = process.env.SWAPXY;
+const ROTATE = process.env.ROTATE;
+const FLIP = process.env.FLIP;
+const FLOP = process.env.FLOP;
 const X_SIZE = process.env.X_SIZE;
 const Y_SIZE = process.env.Y_SIZE;
-//const MARGIN = 5;
+
 var scaleGcode = parseFloat(Math.min(1000 / X_SIZE, 1000 / Y_SIZE));
 scaleGcode = scaleGcode.toFixed(2);
 
@@ -79,8 +83,15 @@ function process_file(filename, callback) {
             // function below was for logging memory usage
             if (line.length > 0 && !line.startsWith("#") && !line.startsWith("//") && !line.startsWith(";")) {
                 // Process line...not a comment
-                var [gValue, xCord, yCord] = line.split(new RegExp("\\s+")).filter((v) => { return v.length > 0 });
-		//console.log("Split Values: G: " + gValue + " Xcord: " + xCord + " Ycord: " + yCord)
+		if (SWAPXY == 'true') {
+			//swap coordinates
+			var [gValue, yCord, xCord] = line.split(new RegExp("\\s+")).filter((v) => { return v.length > 0 });
+		}
+		else {
+			//use coordinates AS IS
+			var [gValue, xCord, yCord] = line.split(new RegExp("\\s+")).filter((v) => { return v.length > 0 });
+		}
+
 		xCord = parseFloat(xCord.slice(1));
 		yCord = parseFloat(yCord.slice(1));
 		writeToFile(outStream, outFillStream, "G0", [xCord, yCord]);
@@ -111,8 +122,9 @@ function process_gcode_file_to_gcode(filename, callback) {
     });
 }
 
-module.exports.X_SIZE = X_SIZE;
-module.exports.Y_SIZE = Y_SIZE;
+module.exports.ROTATE = ROTATE;
+module.exports.FLIP = FLIP;
+module.exports.FLOP = FLOP;
 
 if (isMainThread) {
     module.exports.process_gcode_file_to_gcode = process_gcode_file_to_gcode;
