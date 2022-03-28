@@ -13,7 +13,7 @@ class Led extends React.Component {
     this.onColorChange;
     this.sendCmd = this.sendCmd.bind(this);
 
-    this.modes = ["Off", "Rainbow", "Christmas", "Color Pulse", "Ambiance", "Confetti"];
+    this.modes = ["Off", "Rainbow", "Christmas", "Color Pulse", "Ambiance", "Confetti", "Ocean"];
 
     this.colorChanging = false;
     this.brightnessChanging = false;

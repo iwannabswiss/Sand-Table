@@ -10,6 +10,7 @@
 #include "colorpulse.h"
 #include "ambiance.h"
 #include "confetti.h"
+#include "ocean.h"
 
 void next_frame(uint8_t mode, CRGB *leds, uint8_t *dat)
 {
@@ -39,6 +40,9 @@ void next_frame(uint8_t mode, CRGB *leds, uint8_t *dat)
     case CONFETTI:
         updateFn = &confetti;
         break;
+    case OCEAN:
+    	updateFN = &ocean;
+	break;
     default:
         updateFn = &off; // Turn off by default
         break;
@@ -72,6 +76,9 @@ uint8_t *init_dat(uint8_t mode)
     case CONFETTI:
         initFn = &init_confetti_dat;
         break;
+    case OCEAN:
+    	initFn = &init_ocean.dat;
+	break;
     default:
         initFn = *init_off_dat; // Turn off by default
         break;

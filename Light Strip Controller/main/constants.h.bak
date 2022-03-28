@@ -28,7 +28,6 @@
 #define COLOR_PULSE 3
 #define AMBIANCE 4
 #define CONFETTI 5
-#define OCEAN 6
 
 #define SOLID_COLOR 255 // Not to be used by client...only internally
 
