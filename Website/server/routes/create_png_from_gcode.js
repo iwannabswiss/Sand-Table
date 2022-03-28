@@ -313,7 +313,7 @@ function process_file(
 	var FLOP = process_gcode.FLOP;
 
 	if (ROTATE == 'true' && FLIP == 'true' && FLOP == 'true') {
-		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+		sharp(Buffer.from(svg)).resize(500).rotate(-90).flip().flop().toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
             		if (err) {
                 		console.log("Cannot write " + title + ".png file.");
             		} else {
@@ -323,7 +323,7 @@ function process_file(
         	}); //EO sharp
 	}
 	else if (ROTATE == 'true' && FLIP == 'true') {
-		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+		sharp(Buffer.from(svg)).resize(500).rotate(-90).flip().toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
             		if (err) {
                 		console.log("Cannot write " + title + ".png file.");
             		} else {
@@ -333,7 +333,7 @@ function process_file(
         	}); //EO sharp
 	}
 	else if (ROTATE == 'true' && FLOP == 'true') {
-		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+		sharp(Buffer.from(svg)).resize(500).rotate(-90).flop().toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
             		if (err) {
                 		console.log("Cannot write " + title + ".png file.");
             		} else {
@@ -343,7 +343,7 @@ function process_file(
         	}); //EO sharp
 	}
 	else if (FLIP == 'true' && FLOP == 'true') {
-		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+		sharp(Buffer.from(svg)).resize(500).flip().flop().toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
             		if (err) {
                 		console.log("Cannot write " + title + ".png file.");
             		} else {
@@ -353,7 +353,7 @@ function process_file(
         	}); //EO sharp
 	}
 	else if (ROTATE == 'true') {
-		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+		sharp(Buffer.from(svg)).resize(500).rotate(-90).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
             		if (err) {
                 		console.log("Cannot write " + title + ".png file.");
             		} else {
@@ -363,7 +363,7 @@ function process_file(
         	}); //EO sharp
 	}
 	else if (FLIP == 'true') {
-		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+		sharp(Buffer.from(svg)).resize(500).flip().toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
             		if (err) {
                 		console.log("Cannot write " + title + ".png file.");
             		} else {
@@ -373,7 +373,7 @@ function process_file(
         	}); //EO sharp
 	}
 	else if (FLOP == 'true') {
-		sharp(Buffer.from(svg)).resize(500).toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
+		sharp(Buffer.from(svg)).resize(500).flop().toFile(__dirname + "/../../files/" + title + ".png", (err, info) => {
             		if (err) {
                 		console.log("Cannot write " + title + ".png file.");
             		} else {
