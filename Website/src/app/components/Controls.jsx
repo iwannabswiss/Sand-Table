@@ -137,7 +137,7 @@ class Controls extends React.Component {
             >
               <IoMdRepeat
                 className={
-                  this.state.repeat ? "text-success" : "text-light"
+                  this.state.repeat ? "text-warning" : "text-light"
                 }
                 size="2em"
               />
